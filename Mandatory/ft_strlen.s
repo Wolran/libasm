@@ -17,11 +17,11 @@ ft_strlen:
     xor rax, rax				; Initialisation de rax à 0
 
 while:
-    mov bl, byte [rdi + rax]	; charge le byte à l'adresse de rdi + rax dans bl
+    mov bl, byte [rdi + rax]			; charge le byte à l'adresse de rdi + rax dans bl
     test bl, bl					; vérifie si bl est == \0
-    jz end						; si bl est nul, jump vers end
-    inc rax						; incrémente rax de 1
-	jmp while					; retourne au début de la boucle
+    jz end					; si bl est nul, jump vers end
+    inc rax					; incrémente rax de 1
+	jmp while				; retourne au début de la boucle
 
 end:
-    ret							; return rax
+    ret						; return rax
