@@ -2,12 +2,12 @@
 section .text
 	global ft_strlen
 
-ft_strlen:
-	xor rax, rax 				 ;je remet tout les bit 1 de rax a 0 pour avoir: rax = 0d
+ft_strlen:	
+	xor rax, rax 					;je remet tout les bit 1 de rax a 0 pour avoir: rax = 0d
 	;mov rax, 0d
 
 while:
-	cmp byte[rdi + rax], 0		; je compare str a l'index rax avec \0
+	cmp byte[rdi + rax], 0				; je compare str a l'index rax avec \0
 	je end						; saute vers end si le comparatif est correcte
 	inc rax						; j'incrémente rax de 1
 	jmp while					; sinon je loop sur while
@@ -21,13 +21,13 @@ section .text
 	global ft_strlen
 
 ft_strlen:
-	mov rax, -1d 				; je remet tout les bit 1 de rax a 0 pour avoir: rax = 0d 
+	mov rax, -1d 					; je remet tout les bit 1 de rax a 0 pour avoir: rax = 0d 
 
 while:
 	inc rax						; j'incrémente rax de 1
-	cmp byte[rdi + rax], 0d		; je compare str a l'index rax avec \0
+	cmp byte[rdi + rax], 0d				; je compare str a l'index rax avec \0
 	jne while					; si le compare n'est pas bon je loop sur while
-	ret							; je return la fin de la fonction
+	ret						; je return la fin de la fonction
 
 -----------------------------------------------------------------------------------------------
 ; test avec mov et test
@@ -35,12 +35,12 @@ section .text
 	global ft_strlen
 
 ft_strlen:
-    xor rax, rax				; rax = 0
-	xor rbx, rbx				; rbx = 0
+    xor rax, rax					; rax = 0
+	xor rbx, rbx					; rbx = 0
 
 while:
-    mov bl, byte [rdi + rax]	; charge le byte à l'adresse de rdi + rax dans bl
-    test bl, bl					; vérifie si bl est nul (plus rapide que cmp)
+    mov bl, byte [rdi + rax]				; charge le byte à l'adresse de rdi + rax dans bl
+    test bl, bl						; vérifie si bl est nul (plus rapide que cmp)
     jz end						; si bl est nul, sort de la boucle
     inc rax						; incrémente rax
 	jmp while					; retourne au début de la boucle
@@ -54,16 +54,16 @@ section .text
     global ft_strlen
 
 ft_strlen:
-    xor rax, rax				; rax = 0
-	xor rbx, rbx				; rbx = 0
-   
+    xor rax, rax					; rax = 0
+	xor rbx, rbx					; rbx = 0
+   	
 while:
-    mov bl, byte [rdi]			; charge le byte à l'adresse de rdi dans bl
-    test bl, bl					; vérifie si bl est nul (plus rapide que cmp)
+    mov bl, byte [rdi]					; charge le byte à l'adresse de rdi dans bl
+    test bl, bl						; vérifie si bl est nul (plus rapide que cmp)
 	jz end						; si bl est nul, sort de la boucle
-    inc rdi           			; incrémente rdi
+    inc rdi           					; incrémente rdi
     inc rax						; incrémente rax
-    jmp while					; retourne au début de la boucle
+    jmp while						; retourne au début de la boucle
 
 end:
     ret
