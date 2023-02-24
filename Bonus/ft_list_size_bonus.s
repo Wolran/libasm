@@ -21,7 +21,7 @@ while:
 	jz end					; si rdi est NULL jump vers end
 	inc rax					; incremente rax de 1
 	mov rdi, [rdi + 8]			; met rdi a l'adresse du prochain element de la chaine
-	jmp while				; jump vers while
+	jmp while				; jump vers while pour boucler
 
 end:
 	ret					; return rax
